@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "DroneCafe",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "Diploma for Node/Mongo/AngularJS course",
+  "repository": "https://github.com/DImaDsky/DroneCafe",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
@@ -32,10 +32,13 @@
     "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
   },
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.4",
     "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.4",
+    "angular-resource": "^1.6.4",
     "angular-route": "^1.6.4",
     "express": "^4.15.3"
   }

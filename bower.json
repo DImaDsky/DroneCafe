@@ -1,15 +1,16 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "DroneCafe",
+  "description": "Diploma for Node/Mongo/AngularJS course",
+  "version": "1.0.0",
+  "homepage": "https://github.com/DImaDsky/DroneCafe",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.5.0",
-    "angular-route": "~1.5.0",
-    "angular-loader": "~1.5.0",
-    "angular-mocks": "~1.5.0",
-    "html5-boilerplate": "^5.3.0"
+    "angular": "^1.6.4",
+    "angular-ui-router": "ui-router#^0.3.2",
+    "angular-loader": "^1.6.0",
+    "angular-mocks": "^1.6.0",
+    "html5-boilerplate": "^5.3.0",
+    "angular-messages": "^1.6.0"
   }
 }

@@ -1,0 +1,24 @@
+<div layout="row">
+    <div flex class="md-margin">
+        <md-toolbar class="md-padding">Ordered</md-toolbar>
+        <md-list>
+            <md-list-item ><!--ng-repeat="item in todos"-->
+                <div  flex class="md-list-item-text">
+                    <p>{{item.title}}zzz</p>
+                </div>
+                <md-button flex="nogrow" class="start" data-dish-id="{{item._id}}">Start prepare</md-button>
+            </md-list-item>
+        </md-list>
+    </div>
+    <div flex class="md-margin">
+        <md-toolbar class="md-padding">Dishes in process</md-toolbar>
+        <md-list>
+            <md-list-item layout=""><!--ng-repeat="item in todos"-->
+                <div flex class="md-list-item-text">
+                    <p>{{item.title}}zzz</p>
+                </div>
+                <md-button flex="nogrow" class="ready" data-dish-id="{{item._id}}">Ready</md-button>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>
