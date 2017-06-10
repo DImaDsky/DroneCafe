@@ -1,38 +1,11 @@
-<form name="auth" layout="column" layout-align="space-around" style="height: 150px"  ng-if="true">
-    <div layout="row" layout-align="center center">
-        <md-input-container  flex="50">
-            <label>Name</label>
-            <input ng-model="user.login" type="text" required ng-minlength="3" name="namez">
-            <div ng-messages="auth.namez.$error">
-                <div ng-message="required">Email is required!</div>
-                <div ng-message="minlength" class="alert alert-danger" role="alert">Name is too short</div>
-            </div>
-        </md-input-container>
-    </div>
-    <div layout layout-align="center center">
-        <md-input-container  flex="50">
-            <label>Email</label>
-            <input ng-model="user.email" type="text" name="email"
-                   data-ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"
-                   type="text" required ng-minlength="5" >
-            <div ng-messages="auth.email.$error">
-                <div ng-message="required">Email is required!</div>
-                <div ng-message="pattern" class="alert alert-danger">This is not email</div>
-            </div>
-        </md-input-container>
-    </div>
-    <div layout="row" layout-align="center center">
-            <md-button  flex="50" class="md-primary" id="logIn">Log in</md-button>
-    </div>
-</form>
+<auth-component ng-if="!vm.authorized"></auth-component>
 
-
-<div layout ng-if="true">
+<div layout ng-if="vm.authorized">
     <div flex="40" class="md-margin">
         <auth-data-component></auth-data-component>
     </div>
     <div flex="60" class="md-margin">
-        <md-toolbar class="md-padding" >Your order</md-toolbar>
+        <md-toolbar class="md-padding  md-toolbar-tools" >Your order</md-toolbar>
         <md-list>
             <md-list-item class="md-2-line" ><!--ng-repeat="item in todos"-->
                 <md-checkbox ng-model="item.done"></md-checkbox>

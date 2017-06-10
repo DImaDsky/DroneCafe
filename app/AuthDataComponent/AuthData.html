@@ -1,20 +1,27 @@
-<md-toolbar class="md-padding">Account info</md-toolbar>
-<div  layout="column" layout-align="space-around" style="height: 190px">
+<md-toolbar class="md-padding md-toolbar-tools">
+    Account info
+    <div flex></div>
+    <div flex="nogrow">
+        <md-button ng-click="$ctrl.logout()" class="nullify">X</md-button>
+    </div>
+</md-toolbar>
+<div  layout="column" layout-align="space-around" class="md-margin" style="height: 185px; margin-top: 25px">
     <div layout layout-align="center center">
-        <md-input-container  flex="80">
+        <md-input-container  flex="90">
             <label>Name</label>
-            <input ng-model="user.login" type="text" disabled value="zzz" >
+            <input ng-model="$ctrl.login" type="text" disabled value="zzz" >
         </md-input-container>
+
     </div>
     <div layout layout-align="center center">
-        <md-input-container  flex="80">
+        <md-input-container  flex="90">
             <label>Email</label>
-            <input ng-model="user.email" type="text" disabled value="zzz">
+            <input ng-model="$ctrl.email" type="text" disabled value="zzz">
         </md-input-container>
     </div>
     <div layout layout-align="center center">
-        <div flex="80">
-            <md-button class="md-primary" ng-click="user.topUp()">Top up for 100 credits</md-button>
+        <div flex="85">
+            <md-button class="md-primary" ng-click="$ctrl.topUp()">Top up for 100 credits</md-button>
         </div>
     </div>
 </div>

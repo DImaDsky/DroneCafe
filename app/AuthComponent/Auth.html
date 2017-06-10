@@ -1,0 +1,27 @@
+<form name="auth" layout="column" layout-align="space-around" style="height: 180px">
+    <div layout="row" layout-align="center center">
+        <md-input-container  flex="50">
+            <label>Login</label>
+            <input ng-model="$ctrl.login" type="text" required ng-minlength="3" name="login">
+            <div ng-messages="auth.login.$error">
+                <!--<div ng-message="required">Login is required!</div>-->
+                <div ng-message="minlength" class="alert alert-danger" role="alert">Login is too short</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-align="center center">
+        <md-input-container  flex="50">
+            <label>Email</label>
+            <input ng-model="$ctrl.email" type="text" name="email"
+                   data-ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"
+                   type="text" required ng-minlength="5" >
+            <div ng-messages="auth.email.$error">
+                <div ng-message="required">Email is required!</div>
+                <div ng-message="pattern" class="alert alert-danger">This is not email</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-align="center center">
+        <md-button  flex="50" class="md-primary" ng-click="$ctrl.auth()">Log in</md-button>
+    </div>
+</form>
