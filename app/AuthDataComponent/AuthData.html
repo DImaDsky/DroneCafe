@@ -1,4 +1,4 @@
-<md-toolbar class="md-padding md-toolbar-tools">
+<md-toolbar class="md-toolbar-tools">
     Account info
     <div flex></div>
     <div flex="nogrow">
@@ -9,18 +9,24 @@
     <div layout layout-align="center center">
         <md-input-container  flex="90">
             <label>Name</label>
-            <input ng-model="$ctrl.login" type="text" disabled value="zzz" >
+            <input ng-model="$ctrl.login" type="text" disabled>
         </md-input-container>
 
     </div>
     <div layout layout-align="center center">
         <md-input-container  flex="90">
             <label>Email</label>
-            <input ng-model="$ctrl.email" type="text" disabled value="zzz">
+            <input ng-model="$ctrl.email" type="text" disabled>
         </md-input-container>
     </div>
     <div layout layout-align="center center">
-        <div flex="85">
+        <md-input-container  flex="90">
+            <label>Credits</label>
+            <input ng-model="$ctrl.credits" type="text" disabled>
+        </md-input-container>
+    </div>
+    <div layout layout-align="center center">
+        <div flex="90">
             <md-button class="md-primary" ng-click="$ctrl.topUp()">Top up for 100 credits</md-button>
         </div>
     </div>

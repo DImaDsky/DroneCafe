@@ -2,20 +2,12 @@
 
 angular
 .module('myApp')
-.controller('KitchenCtrl', function() {
+.controller('KitchenCtrl', function(OrderService) {
     console.log('KitchenCtrl')
-    var vm = this;
+    var that = this;
 
-    // vm.myOrderProperty = 'weight';
-    // vm.myQuery = '';
-    //
-    // PokemonService.getPokemons().then(function(pokemonData) {
-    //     console.log(pokemonData);
-    //     vm.pokemons = pokemonData.data;
-    // });
-    //
-    // vm.addToCart = function(pokemon) {
-    //     ShoppingCartStore.addItem(pokemon);
-    // };
-
+    OrderService.query().$promise.then(function (data) {
+        that.orders = data;
+        console.log('K data: ', data);
+    });
 });

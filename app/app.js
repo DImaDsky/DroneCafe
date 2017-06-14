@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+var cafeApp = angular.module('myApp', [
     'ui.router',
     'ngMessages',
     'ngMaterial',
@@ -32,13 +32,6 @@ config(function($mdThemingProvider) {
 
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
-        // If you specify less than all of the keys, it will inherit from the
-        // default shades
+        // If you specify less than all of the keys, it will inherit from the default shades
         .accentPalette('blue-grey');
-
 });
-// config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-//   $locationProvider.hashPrefix('!');
-//
-//   $routeProvider.otherwise({redirectTo: '/view1'});
-// }]);

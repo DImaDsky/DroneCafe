@@ -7,12 +7,10 @@
     <div flex="60" class="md-margin">
         <md-toolbar class="md-padding  md-toolbar-tools" >Your order</md-toolbar>
         <md-list>
-            <md-list-item class="md-2-line" ><!--ng-repeat="item in todos"-->
-                <md-checkbox ng-model="item.done"></md-checkbox>
+            <md-list-item class="md-2-line" ng-repeat="item in vm.orders">
                 <div class="md-list-item-text">
                     <h3>{{item.title}}</h3>
                     <p>{{item.status}}</p>
-                    <p>zzz</p>
                 </div>
             </md-list-item>
 
