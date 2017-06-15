@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const url = 'mongodb://localhost:27017/test';
+const url = 'mongodb://localhost:27017/droneCafe';
 mongoose.connect(url);
 let db = mongoose.connection;
 db.on('error', err => {

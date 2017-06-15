@@ -3,8 +3,9 @@
 angular.module('myApp').component('authDataComponent', {
 
     controller: function ($rootScope, AccountService) {
+        var that = this;
 
-        this.login = $rootScope.login;
+        this.name = $rootScope.name;
         this.email = $rootScope.email;
         this.credits = $rootScope.credits;
 
@@ -13,7 +14,10 @@ angular.module('myApp').component('authDataComponent', {
             $rootScope.authorized = false;
         };
         this.topUp = function () {
-            AccountService.query({email: this.email, credits: 100});
+            var topUpOn = 100;
+            AccountService.update({email: this.email, credits: topUpOn}).$promise.then(function () {
+                that.credits = + that.credits + topUpOn;
+            });
         };
     },
     templateUrl: './AuthDataComponent/AuthData.html'

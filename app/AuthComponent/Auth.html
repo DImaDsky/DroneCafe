@@ -1,11 +1,11 @@
 <form name="auth" layout="column" layout-align="space-around" style="height: 180px">
     <div layout="row" layout-align="center center">
         <md-input-container  flex="50">
-            <label>Login</label>
-            <input ng-model="$ctrl.login" type="text" required ng-minlength="3" name="login">
-            <div ng-messages="auth.login.$error">
+            <label>Name</label>
+            <input ng-model="$ctrl.name" type="text" required ng-minlength="3" name="name">
+            <div ng-messages="auth.name.$error">
                 <!--<div ng-message="required">Login is required!</div>-->
-                <div ng-message="minlength" class="alert alert-danger" role="alert">Login is too short</div>
+                <div ng-message="minlength" class="alert alert-danger" role="alert">Name is too short</div>
             </div>
         </md-input-container>
     </div>

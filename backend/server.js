@@ -13,10 +13,10 @@ const express = require('express'),
     // }),
     // //socket = require('./socket'),
     // sharedsession = require('express-socket.io-session'),
-    // {mongoose, db} = require('./mongodb/mongooseConnect'),
+    {mongoose, db} = require('./mongodb/mongooseConnect'),
     port = 3333;
 
-app.use(express.static(__dirname + '/views1111/public'));
+// app.use(express.static(__dirname + '/views1111/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(session);
