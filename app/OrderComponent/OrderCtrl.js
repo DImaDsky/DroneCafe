@@ -15,19 +15,29 @@ angular.module('myApp').component('addDishComponent', {
                 // },
                 controller: OrderDialogCtrl
             });
-            function OrderDialogCtrl($mdDialog) {
+            function OrderDialogCtrl($mdDialog, $rootScope, OrderService) {
 
                 var self = this;
-                var menuPromise = MenuService.query();
-
-                menuPromise.$promise.then( function (res){
+                MenuService.query().$promise.then( function (res){
                     self.menu = res;
                 });
+
                 this.closeDialog = function() {
                     $mdDialog.hide();
                 };
                 this.confirmOrder = function () {
-                    console.log('confirmOrder')
+                    var order = [];
+                    self.menu.forEach(function (elem, i, arr) {
+                        //TODO send only id and upload menu in kitchen for names
+                        if(elem.checked) {
+                            order.push({id: elem.id, title: elem.title});
+                        }
+                    });
+                    if(order.length) {
+                        OrderService.save({email:sessionStorage.getItem('email'), order: order});
+                        $rootScope.$emit('renewOrders');
+                        $mdDialog.hide();
+                    }
                 };
             }
         };

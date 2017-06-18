@@ -10,12 +10,19 @@ cafeApp.controller('ClientCtrl', function($rootScope, OrderService) {
         if(that.authorized){
             $rootScope.name = sessionStorage.getItem('name');
             $rootScope.credits = sessionStorage.getItem('credits');
-
-            OrderService.query({email: email}).$promise.then(function (data) {
-                that.orders = data;
+            $rootScope.$on('renewOrders', function () {
+                debugger
+                getOrder(email);
             });
+            getOrder(email)
         }
     });
+
+    function getOrder(email) {
+        OrderService.query({email: email}).$promise.then(function (data) {
+            that.orders = data;
+        });
+    }
 /*
     $scope.recievedTroughSocket = "still waiting for data...";
     $scope.sendWithSocket = function(msg){

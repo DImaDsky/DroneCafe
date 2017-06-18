@@ -3,17 +3,17 @@
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>Order dishes please</h2>
-            <span flex="" class="flex"></span>
+            <span flex class="flex"></span>
             <md-button class="nullify" ng-click="dialog.closeDialog()">X</md-button>
         </div>
     </md-toolbar>
     <md-dialog-content class="md-margin">
         <md-list>
             <md-list-item ng-repeat="item in dialog.menu">
-                <div flex class="md-list-item-text">
+                <div flex class="md-list-item-text r-padding">
                     <p>{{item.title}}</p>
                 </div>
-                <md-checkbox ng-model="order['{{item._id}}']" class="md-secondary"></md-checkbox>
+                <md-checkbox ng-model="item.checked" class="md-secondary"></md-checkbox>
             </md-list-item>
         </md-list>
     </md-dialog-content>

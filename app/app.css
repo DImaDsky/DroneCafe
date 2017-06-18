@@ -27,3 +27,7 @@
 .nullify{
   min-width: 0;
 }
+
+r-padding{
+  padding-right: 5px;
+}
