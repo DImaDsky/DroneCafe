@@ -20,5 +20,5 @@ angular.module('myApp').component('authDataComponent', {
             });
         };
     },
-    templateUrl: './AuthDataComponent/AuthData.html'
+    templateUrl: './app/AuthDataComponent/AuthData.html'
 });

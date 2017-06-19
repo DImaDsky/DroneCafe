@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>DroneCafe</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
+  <link rel="stylesheet" href="app/app.css">
+  <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+</head>
+<body ng-app="myApp">
+
+  <ul class="menu">
+    <li><md-button data-ui-sref="client" data-ui-sref-active="menu-active">Client</md-button></li>
+    <li><md-button data-ui-sref="kitchen" data-ui-sref-active="menu-active">Kitchen</md-button></li>
+  </ul>
+
+  <div ng-view></div>
+  <ui-view></ui-view>
+
+  <script src="./node_modules/angular/angular.js"></script>
+  <script src="./node_modules/angular-messages/angular-messages.js"></script>
+  <script src="./node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="./node_modules/angular-material/angular-material.js"></script>
+  <script src="./node_modules/angular-animate/angular-animate.js"></script>
+  <script src="./node_modules/angular-aria/angular-aria.js"></script>
+  <script src="./node_modules/angular-resource/angular-resource.js"></script>
+  <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+  <!--<script src="../node_modules/socket.io/lib/client.js"></script>-->
+
+  <script src="app/app.js"></script>
+  <script src="app/Services/MenuService.js"></script>
+  <script src="app/Services/AccountService.js"></script>
+  <script src="app/Services/OrderService.js"></script>
+  <script src="app/Services/Socket.js"></script>
+  <script src="app/Client/ClientCtrl.js"></script>
+  <script src="app/Kitchen/KitchenCtrl.js"></script>
+  <script src="app/OrderComponent/OrderCtrl.js"></script>
+  <script src="app/AuthDataComponent/AuthData.js"></script>
+  <script src="app/AuthComponent/Auth.js"></script>
+
+</body>
+</html>

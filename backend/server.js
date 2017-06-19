@@ -6,21 +6,22 @@ const express = require('express'),
     account = require('./account'),
     order = require('./order'),
     app = express(),
-    // session = require('express-session')({
-    //     secret: "aliensAreAmongUs",
-    //     resave: true,
-    //     saveUninitialized: true
-    // }),
-    // //socket = require('./socket'),
-    // sharedsession = require('express-socket.io-session'),
-    {mongoose, db} = require('./mongodb/mongooseConnect'),
+
     port = 3333;
 
-// app.use(express.static(__dirname + '/views1111/public'));
+
+let httpServer = http.Server(app);
+httpServer.listen(port, function(){
+    console.log("server listening on port", port);
+});
+
+app.use(express.static(__dirname + '/../'));
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(session);
-
+debugger
 app.use('/account', account);
 app.use('/order', order);
 
@@ -28,20 +29,26 @@ app.all('*', (req, res) => {
     res.send({message: '404'});
 });
 
-let httpServer = http.Server(app);
-httpServer.listen(port, function(){
-    console.log("server listening on port", port);
-});
+
 
 //cd C:\Program Files\MongoDB\Server\3.4\bin  //mongod
 // let kitchen = io.of('/kitchen');
 // let clients = io.of('/clients');
+
+// session = require('express-session')({
+//     secret: "aliensAreAmongUs",
+//     resave: true,
+//     saveUninitialized: true
+// }),
+// //socket = require('./socket'),
+// sharedsession = require('express-socket.io-session'),
 
 // clients.on('connection',(socket) => {
 //     socket.on()
 //     socket.emit()
 //     io.emit()//to all
 // });
+
 // let io = require('socket.io').listen(httpServer);
 // io.use(sharedsession(session));
 // io.on('connection', function(socket){

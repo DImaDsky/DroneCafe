@@ -8,7 +8,7 @@ angular.module('myApp').component('addDishComponent', {
             var parentEl = angular.element(document.body);
             $mdDialog.show({
                 parent: parentEl,
-                templateUrl: 'OrderComponent/OrderDialog.html',
+                templateUrl: 'app/OrderComponent/OrderDialog.html',
                 controllerAs: 'dialog',
                 // locals: {
                 //     items: $scope.items // to pass items in OrderDialogCtrl
@@ -43,5 +43,5 @@ angular.module('myApp').component('addDishComponent', {
         };
 
     },
-    templateUrl: './OrderComponent/Order.html'
+    templateUrl: './app/OrderComponent/Order.html'
 });

@@ -7,7 +7,7 @@
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>
                 </div>
-                <md-button flex="nogrow" class="start" data-dish-id="{{item._id}}">Start prepare</md-button>
+                <md-button flex="nogrow" class="start" ng-click="vm.start(item)" data-dish-id="{{item._id}}">Start</md-button>
             </md-list-item>
         </md-list>
     </div>
@@ -19,7 +19,7 @@
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>
                 </div>
-                <md-button flex="nogrow" class="ready" data-dish-id="{{item._id}}">Ready</md-button>
+                <md-button flex="nogrow" class="ready" ng-click="vm.finish(item)">Ready</md-button>
             </md-list-item>
         </md-list>
     </div>

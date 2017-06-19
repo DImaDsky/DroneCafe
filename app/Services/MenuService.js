@@ -1,5 +1,5 @@
 cafeApp.factory('MenuService', function($resource) {
-    return $resource('./menu.json', {
+    return $resource('./app/menu.json', {
         query: {
             method: 'GET',
             isArray: true,

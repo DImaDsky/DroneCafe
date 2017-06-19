@@ -13,5 +13,5 @@ angular.module('myApp').component('authComponent', {
             }.bind(this));
         };
     },
-    templateUrl: './AuthComponent/Auth.html'
+    templateUrl: './app/AuthComponent/Auth.html'
 });
