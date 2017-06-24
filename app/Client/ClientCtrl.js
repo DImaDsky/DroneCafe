@@ -1,6 +1,6 @@
 'use strict';
 
-cafeApp.controller('ClientCtrl', function($rootScope, OrderService) {
+cafeApp.controller('ClientCtrl', function($rootScope, OrderService, SocketService) {
     var that = this;
 
     $rootScope.$watch('authorized', function (newVal,oldVal) {
@@ -22,14 +22,12 @@ cafeApp.controller('ClientCtrl', function($rootScope, OrderService) {
             that.orders = data;
         });
     }
-/*
-    $scope.recievedTroughSocket = "still waiting for data...";
-    $scope.sendWithSocket = function(msg){
-        socket.emit("something", msg);
-    };
-    socket.on("greetings", function(data){
-        console.log("user data: " + JSON.stringify(data));
-        $scope.recievedTroughSocket = data.msg;
+
+    SocketService.on('status-change', function (changed) {
+        that.orders.forEach(function (elem, i, arr) {
+            if (changed.id == elem.id){
+                arr[i] = changed;
+            }
+        })
     });
-    /**/
 });

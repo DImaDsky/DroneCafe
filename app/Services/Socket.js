@@ -1,13 +1,8 @@
 cafeApp.factory('SocketService', function ($rootScope) {
-    var socket = io.connect('http://127.0.0.1:3333',{
-        AAdata:'!!!!!!!!!',
-        extraHeaders: {
-            Authorization: "EEmaiL"
-        }
-    });
+    var socket = io.connect();
     var email = sessionStorage.getItem('email');
-    if (!email){
-        socket.emit('new-user', {email:'A@A.re'});
+    if (email){
+        socket.emit('new-user', {email: email});
     }
 
     return {

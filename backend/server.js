@@ -44,9 +44,11 @@ io.sockets.on('connection', function(socket){
 
     socket.on("status-change", function(dish){
         //1 to DB
-        //2 tell client
-        // console.log("something:" + data);
-        debugger
+
+        let user = socketsUsers[dish.email];
+        if(user) {
+            io.sockets.sockets[user].emit('status-change', dish);
+        }
     });
 
     socket.on('disconnect', function() {
