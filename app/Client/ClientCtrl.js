@@ -11,7 +11,6 @@ cafeApp.controller('ClientCtrl', function($rootScope, OrderService) {
             $rootScope.name = sessionStorage.getItem('name');
             $rootScope.credits = sessionStorage.getItem('credits');
             $rootScope.$on('renewOrders', function () {
-                debugger
                 getOrder(email);
             });
             getOrder(email)

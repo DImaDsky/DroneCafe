@@ -1,9 +1,6 @@
 'use strict';
 
-angular
-.module('myApp')
-.controller('KitchenCtrl', function(OrderService, SocketService) {
-    console.log('KitchenCtrl')
+cafeApp.controller('KitchenCtrl', function(OrderService, SocketService) {
     var that = this;
 
     OrderService.query().$promise.then(function (data) {
@@ -12,10 +9,11 @@ angular
     });
 
     this.start = function (item) {
-        debugger
-        //SocketService.emit('status-change', {status: 'In process'});
+        item.status = 'In process';
+        SocketService.emit('status-change', item);
     };
     this.ready = function (item) {
-        //SocketService.emit('status-change', {status: 'ready'});
+        item.status = 'On the way';
+        SocketService.emit('status-change', item);
     };
 });

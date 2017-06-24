@@ -2,24 +2,24 @@
     <div flex class="md-margin">
         <md-toolbar class="md-toolbar-tools">Ordered</md-toolbar>
         <md-list>
-            <md-list-item class="md-2-line" ng-repeat="item in vm.orders">
+            <md-list-item class="md-2-line" ng-repeat="item in vm.orders|filter:'Ordered'">
                 <div class="md-list-item-text">
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>
                 </div>
-                <md-button flex="nogrow" class="start" ng-click="vm.start(item)" data-dish-id="{{item._id}}">Start</md-button>
+                <md-button flex="nogrow" class="start" ng-click="vm.start(item)">Start</md-button>
             </md-list-item>
         </md-list>
     </div>
     <div flex class="md-margin">
         <md-toolbar class="md-toolbar-tools">Dishes in process</md-toolbar>
         <md-list>
-            <md-list-item class="md-2-line"  ng-repeat="item in vm.orders">
+            <md-list-item class="md-2-line"  ng-repeat="item in vm.orders|filter:'In process'">
                 <div class="md-list-item-text">
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>
                 </div>
-                <md-button flex="nogrow" class="ready" ng-click="vm.finish(item)">Ready</md-button>
+                <md-button flex="nogrow" class="ready" ng-click="vm.ready(item)">Ready</md-button>
             </md-list-item>
         </md-list>
     </div>

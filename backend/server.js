@@ -6,9 +6,7 @@ const express = require('express'),
     account = require('./account'),
     order = require('./order'),
     app = express(),
-
     port = 3333;
-
 
 let httpServer = http.Server(app);
 httpServer.listen(port, function(){
@@ -20,8 +18,7 @@ app.use(express.static(__dirname + '/../'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(session);
-debugger
+
 app.use('/account', account);
 app.use('/order', order);
 
@@ -32,30 +29,32 @@ app.all('*', (req, res) => {
 
 
 //cd C:\Program Files\MongoDB\Server\3.4\bin  //mongod
-// let kitchen = io.of('/kitchen');
-// let clients = io.of('/clients');
 
-// session = require('express-session')({
-//     secret: "aliensAreAmongUs",
-//     resave: true,
-//     saveUninitialized: true
-// }),
-// //socket = require('./socket'),
-// sharedsession = require('express-socket.io-session'),
+let socketsUsers = {};
+let zz = 0;
+let io = require('socket.io').listen(httpServer);
 
-// clients.on('connection',(socket) => {
-//     socket.on()
-//     socket.emit()
-//     io.emit()//to all
-// });
+io.sockets.on('connection', function(socket){
 
-// let io = require('socket.io').listen(httpServer);
-// io.use(sharedsession(session));
-// io.on('connection', function(socket){
-//     console.log("connected");
-//     socket.emit("greetings", {msg:"hello"});
-//     socket.on("something", function(data){
-//         console.log("something:" + data);
-//     })
-// });
+    console.log("connected", ++zz);
+
+    socket.on("new-user", function(user){
+        socketsUsers[user.email] = this.id;
+    });
+
+    socket.on("status-change", function(dish){
+        //1 to DB
+        //2 tell client
+        // console.log("something:" + data);
+        debugger
+    });
+
+    socket.on('disconnect', function() {
+        for(let i in  socketsUsers){
+            if(socketsUsers.hasOwnProperty(i) && socketsUsers[i] == this.id){
+                delete socketsUsers[i];
+            }
+        }
+    });
+});
 
