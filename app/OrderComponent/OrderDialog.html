@@ -11,15 +11,24 @@
         <md-list>
             <md-list-item ng-repeat="item in dialog.menu">
                 <div flex class="md-list-item-text r-padding">
-                    <p>{{item.title}}</p>
+                    <p>{{item.title}} {{item.price}}
+                    </p>
                 </div>
-                <md-checkbox ng-model="item.checked" class="md-secondary"></md-checkbox>
+
+                <md-button flex class="md-primary" ng-click="dialog.topUp(item.price - dialog.curCredits)"
+                           ng-hide="dialog.isEnoughCredits(item.price)">
+                    Top up for {{item.price - dialog.curCredits}}
+                </md-button>
+
+                <md-checkbox ng-model="item.checked" ng-change="dialog.changeCurCredits(item)" class="md-secondary"
+                             ng-show="dialog.isEnoughCredits(item.price)">
+                </md-checkbox>
             </md-list-item>
         </md-list>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button ng-click="dialog.confirmOrder()" id="startPrepare">Start prepare</md-button>
-        <md-button ng-click="dialog.closeDialog()" class="md-primary">Close Dialog </md-button>
+        <md-button ng-click="dialog.confirmOrder()">Start prepare</md-button>
+        <md-button ng-click="dialog.closeDialog()" class="md-primary">Close Dialog</md-button>
     </md-dialog-actions>
     </form>
 </md-dialog>

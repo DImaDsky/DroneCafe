@@ -15,8 +15,8 @@ angular.module('myApp').component('authDataComponent', {
         };
         this.topUp = function () {
             var topUpOn = 100;
-            AccountService.update({email: this.email, credits: topUpOn}).$promise.then(function () {
-                that.credits = + that.credits + topUpOn;
+            AccountService.update({email: this.email, credits: topUpOn}).$promise.then(function (user) {
+                that.credits = user.credits;
             });
         };
     },

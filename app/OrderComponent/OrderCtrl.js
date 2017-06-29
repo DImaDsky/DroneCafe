@@ -13,33 +13,8 @@ angular.module('myApp').component('addDishComponent', {
                 // locals: {
                 //     items: $scope.items // to pass items in OrderDialogCtrl
                 // },
-                controller: OrderDialogCtrl
+                controller: 'OrderDialogCtrl'//TODO: to separate file
             });
-            function OrderDialogCtrl($mdDialog, $rootScope, OrderService) {
-
-                var self = this;
-                MenuService.query().$promise.then( function (res){
-                    self.menu = res;
-                });
-
-                this.closeDialog = function() {
-                    $mdDialog.hide();
-                };
-                this.confirmOrder = function () {
-                    var order = [];
-                    self.menu.forEach(function (elem, i, arr) {
-                        //TODO send only id and upload menu in kitchen for names
-                        if(elem.checked) {
-                            order.push({id: elem.id, title: elem.title});
-                        }
-                    });
-                    if(order.length) {
-                        OrderService.save({email:sessionStorage.getItem('email'), order: order});
-                        $rootScope.$emit('renewOrders');
-                        $mdDialog.hide();
-                    }
-                };
-            }
         };
 
     },

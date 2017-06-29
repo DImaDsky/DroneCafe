@@ -5,6 +5,7 @@ const express = require('express'),
     http = require('http'),
     account = require('./account'),
     order = require('./order'),
+    socketIo = require('./socket/index'),
     app = express(),
     port = 3333;
 
@@ -13,6 +14,7 @@ httpServer.listen(port, function(){
     console.log("server listening on port", port);
 });
 
+socketIo.init(httpServer);
 app.use(express.static(__dirname + '/../'));
 
 
@@ -30,33 +32,4 @@ app.all('*', (req, res) => {
 
 //cd C:\Program Files\MongoDB\Server\3.4\bin  //mongod
 
-let socketsUsers = {};
-let zz = 0;
-let io = require('socket.io').listen(httpServer);
-
-io.sockets.on('connection', function(socket){
-
-    console.log("connected", ++zz);
-
-    socket.on("new-user", function(user){
-        socketsUsers[user.email] = this.id;
-    });
-
-    socket.on("status-change", function(dish){
-        //1 to DB
-
-        let user = socketsUsers[dish.email];
-        if(user) {
-            io.sockets.sockets[user].emit('status-change', dish);
-        }
-    });
-
-    socket.on('disconnect', function() {
-        for(let i in  socketsUsers){
-            if(socketsUsers.hasOwnProperty(i) && socketsUsers[i] == this.id){
-                delete socketsUsers[i];
-            }
-        }
-    });
-});
 
