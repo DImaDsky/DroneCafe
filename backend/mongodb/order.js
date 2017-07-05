@@ -23,7 +23,7 @@ module.exports = {
     add: function (email, orders, cb) {
         let promises = [];
         if(orders.length){
-            orders.forEach(item => {
+            orders.forEach((item, i, arr) => {
                 item.email = email;
                 item.status = 'Ordered';
 
@@ -31,18 +31,19 @@ module.exports = {
                 promises.push(new Promise(resolve => {
                     order.save((err, result)=>{
                         if(err){console.log(err)}
+                        item._id = result._id;
                         resolve();
                     });
                 }));
             });
             Promise.all(promises).then(() => {
+                socketIo.io.sockets.emit('new-order', orders);
                 cb();
             });
-            socketIo.io.sockets.emit('new-order', orders);
         }
     },
     change: function (dish, cb) {//from  io
-        Orders.update({email: dish.email, id: dish.id}, { $set: { status: dish.status }}, (err, result) => {
+        Orders.update({_id: mongoose.Types.ObjectId(dish._id)}, { $set: { status: dish.status }}, (err, result) => {
             if(err){console.log(err)}
             if(cb) {
                 cb();
@@ -50,11 +51,16 @@ module.exports = {
         });
     },
     remove: function (dish, cb) {
-        Orders.remove({email: dish.email, id: dish.id, status: dish.status}, (err, result) => {
+        Orders.remove({_id: mongoose.Types.ObjectId(dish._id)}, (err, result) => {
             if(err){console.log(err)}
             if(cb) {
                 cb();
             }
+        });
+    },
+    removeAll: function () {// for debug
+        Orders.remove({}, () => {
+            debugger
         });
     }
 };

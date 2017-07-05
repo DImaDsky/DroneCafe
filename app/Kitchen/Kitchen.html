@@ -2,7 +2,7 @@
     <div flex class="md-margin">
         <md-toolbar class="md-toolbar-tools">Ordered</md-toolbar>
         <md-list>
-            <md-list-item class="md-2-line" ng-repeat="item in vm.orders|filter:'Ordered'">
+            <md-list-item class="md-2-line" ng-repeat="item in vm.orders|filter:{status: 'Ordered'}">
                 <div class="md-list-item-text">
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>
@@ -14,7 +14,7 @@
     <div flex class="md-margin">
         <md-toolbar class="md-toolbar-tools">Dishes in process</md-toolbar>
         <md-list>
-            <md-list-item class="md-2-line"  ng-repeat="item in vm.orders|filter:'In process'">
+            <md-list-item class="md-2-line"  ng-repeat="item in vm.orders|filter:{status: 'In process'}">
                 <div class="md-list-item-text">
                     <p>{{item.title}}</p>
                     <p>{{item.status}}</p>

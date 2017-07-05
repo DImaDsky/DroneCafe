@@ -11,6 +11,7 @@ cafeApp.controller('OrderDialogCtrl', function OrderDialogCtrl($mdDialog, $rootS
     this.topUp = function (topUpOn) {
         AccountService.update({email: sessionStorage.getItem('email'), credits: topUpOn}).$promise.then(function (user) {
             that.curCredits += topUpOn;
+            sessionStorage.setItem('credits', +sessionStorage.getItem('credits') + topUpOn);
         });
     };
     this.isEnoughCredits = function (price) {
@@ -25,12 +26,13 @@ cafeApp.controller('OrderDialogCtrl', function OrderDialogCtrl($mdDialog, $rootS
     };
     this.closeDialog = function() {
         $mdDialog.hide();
+        $rootScope.$emit("creditsAmount", { credits: sessionStorage.getItem('credits')});
     };
     this.confirmOrder = function () {
         var order = [];
         that.menu.forEach(function (elem, i, arr) {
             if(elem.checked) {
-                order.push({id: elem.id, title: elem.title});
+                order.push({id: elem.id, title: elem.title, price:elem.price});
             }
         });
         if(order.length) {
@@ -38,6 +40,7 @@ cafeApp.controller('OrderDialogCtrl', function OrderDialogCtrl($mdDialog, $rootS
             $rootScope.$emit('renewOrders');
             $mdDialog.hide();
             sessionStorage.setItem('credits', this.curCredits);
+            $rootScope.$emit("creditsAmount", { credits: this.curCredits });
         }
     };
 });

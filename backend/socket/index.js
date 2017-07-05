@@ -11,22 +11,21 @@ module.exports.init = function (httpServer) {
     droneApi = require('netology-fake-drone-api');
 
     function statusChange(dish) {//TODO:  dishoperation module
-        order.change(dish);
-
-        let user = socketsUsers[dish.email];
-        if(user) { // user could be offline
-            io.sockets.sockets[user].emit('status-change', dish);
-        }
+        order.change(dish, () => {
+            let user = socketsUsers[dish.email];
+            if(user) { // user could be offline
+                io.sockets.sockets[user].emit('status-change', dish);
+            }
+        });
     }
     function deliverDish(dish) { //TODO:  dishoperation module
         droneApi.deliver()
             .then(() => {
-                console.log('Доставлено');
                 dish.status = 'Served';
                 statusChange(dish);
+                deleteDish(dish);
             })
             .catch(() => {
-                console.log('Возникли сложности')
                 dish.status = 'Some difficulties';
                 statusChange(dish);
                 deleteDish(dish);

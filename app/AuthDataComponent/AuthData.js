@@ -19,6 +19,10 @@ angular.module('myApp').component('authDataComponent', {
                 that.credits = user.credits;
             });
         };
+
+        $rootScope.$on("creditsAmount", function (args, data){
+            that.credits = data.credits;
+        });
     },
     templateUrl: './app/AuthDataComponent/AuthData.html'
 });

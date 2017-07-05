@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('myApp').component('addDishComponent', {
-
     controller: function ($mdDialog, $scope,  MenuService) {
         this.openDialog = function () {
 
@@ -13,10 +12,9 @@ angular.module('myApp').component('addDishComponent', {
                 // locals: {
                 //     items: $scope.items // to pass items in OrderDialogCtrl
                 // },
-                controller: 'OrderDialogCtrl'//TODO: to separate file
+                controller: 'OrderDialogCtrl'
             });
         };
-
     },
     templateUrl: './app/OrderComponent/Order.html'
 });
