@@ -25,7 +25,7 @@
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor e2e-tests/protractor.conf.js",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.3",
