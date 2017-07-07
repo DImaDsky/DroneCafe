@@ -17,7 +17,11 @@
   },
   "scripts": {
     "update-deps": "npm update",
-    "prestart": "npm install",
+    "prestart": [
+      "npm install",
+      "chmod -R 777 backend/",
+      "chmod 777 backend/server.js"
+    ],
     "start": "backend/server.js"
   },
   "dependencies": {
