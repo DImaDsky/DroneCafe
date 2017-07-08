@@ -17,12 +17,8 @@
   },
   "scripts": {
     "update-deps": "npm update",
-    "compile":[
-      "chmod -R 777 backend/",
-      "chmod 777 backend/server.js"
-    ],
     "prestart": "npm install",
-    "start": "backend/server.js"
+    "start": "tryHeroku.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.3",
