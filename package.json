@@ -18,7 +18,7 @@
   "scripts": {
     "update-deps": "npm update",
     "prestart": "npm install",
-    "start": "./tryHeroku.js"
+    "start": "app/tryHeroku.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.3",
