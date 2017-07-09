@@ -1,1 +1,1 @@
-web: node app/tryHeroku.js
+web: node backend/server.js
