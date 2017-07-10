@@ -31,8 +31,10 @@ config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('blue-grey');
-}).config(function ($rootScope) {
-    var heroku = true;
+});
+
+cafeApp.run(function ($rootScope) {
+    var heroku = false;
     if (heroku) {
         $rootScope.appUrl = 'https://agile-mesa-59557.herokuapp.com:5000/';
     } else {
