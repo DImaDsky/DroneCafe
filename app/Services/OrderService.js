@@ -1,6 +1,5 @@
-cafeApp.factory('OrderService', function($resource) {
-    var link = 'http://127.0.0.1:5000/order/';
-    return $resource(link + ':email', {
+cafeApp.factory('OrderService', function($rootScope, $resource) {
+    return $resource($rootScope.appUrl + 'order/:email', {
         email: '@email'
     }, {
         query: {

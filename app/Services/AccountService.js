@@ -1,6 +1,5 @@
-cafeApp.factory('AccountService', function($resource) {
-    var link = 'http://127.0.0.1:5000/account/';
-    return $resource(link + ':email/:name', {
+cafeApp.factory('AccountService', function($rootScope, $resource) {
+    return $resource($rootScope.appUrl + 'account/:email/:name', {
         email: '@email',
         name: '@name',
         credits: '@credits'

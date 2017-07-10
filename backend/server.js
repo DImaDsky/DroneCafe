@@ -7,10 +7,10 @@ const express = require('express'),
     order = require('./order'),
     socketIo = require('./socket/index'),
     app = express(),
-    port = 5000;
+    port = process.env.PORT || 3333;
 
 let httpServer = http.Server(app);
-httpServer.listen(process.env.PORT || port, function(){
+httpServer.listen(port, function() {
     console.log("server listening on port", port);
 });
 
