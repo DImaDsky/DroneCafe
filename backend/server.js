@@ -10,7 +10,7 @@ const express = require('express'),
     port = 3333;
 
 let httpServer = http.Server(app);
-httpServer.listen(port, function(){
+httpServer.listen(process.env.PORT || port, function(){
     console.log("server listening on port", port);
 });
 
