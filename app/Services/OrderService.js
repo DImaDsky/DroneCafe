@@ -1,5 +1,5 @@
 cafeApp.factory('OrderService', function($resource) {
-    var link = 'http://127.0.0.1:3333/order/';
+    var link = 'http://127.0.0.1:5000/order/';
     return $resource(link + ':email', {
         email: '@email'
     }, {

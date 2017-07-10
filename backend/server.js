@@ -7,7 +7,7 @@ const express = require('express'),
     order = require('./order'),
     socketIo = require('./socket/index'),
     app = express(),
-    port = 3333;
+    port = 5000;
 
 let httpServer = http.Server(app);
 httpServer.listen(process.env.PORT || port, function(){
