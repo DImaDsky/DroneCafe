@@ -6,7 +6,7 @@ cafeApp.factory('AccountService', function($rootScope, $resource) {
     }, {
         query: {
             method: 'GET',
-            isArray:false,
+            isArray: false,
             transformResponse: function(responseData) {
                 return angular.fromJson(responseData);
             }
