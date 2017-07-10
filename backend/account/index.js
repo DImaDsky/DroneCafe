@@ -29,3 +29,7 @@ app.put('/:email', function (req, res) {
         });
     });
 });
+
+app.all('*', (req, res) => {
+    console.log("0000000000000",req, res);
+});
