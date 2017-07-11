@@ -7,11 +7,11 @@ const express = require('express'),
     order = require('./order'),
     socketIo = require('./socket/index'),
     app = express(),
-    port = 5000 || process.env.PORT || 3333;
+    port = process.env.PORT || 3333;
 
 let httpServer = http.Server(app);
 httpServer.listen(port, function() {
-    console.log("server listening on port", port);
+    console.log("________server listening on port", port);
 });
 
 socketIo.init(httpServer);
