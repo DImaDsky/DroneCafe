@@ -34,7 +34,7 @@ config(function($mdThemingProvider) {
 });
 
 cafeApp.run(function ($rootScope) {
-    var heroku = false;
+    var heroku = true;
     if (heroku) {
         $rootScope.appUrl = 'https://agile-mesa-59557.herokuapp.com:5000/';
     } else {
