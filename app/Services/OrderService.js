@@ -1,5 +1,5 @@
 cafeApp.factory('OrderService', function($rootScope, $resource) {
-    return $resource($rootScope.appUrl + 'order/:email', {
+    return $resource('/order/:email', {
         email: '@email'
     }, {
         query: {

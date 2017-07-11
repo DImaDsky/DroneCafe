@@ -1,5 +1,5 @@
 cafeApp.factory('AccountService', function($rootScope, $resource) {
-    return $resource($rootScope.appUrl + 'account/:email/:name', {
+    return $resource('/account/:email/:name', {
         email: '@email',
         name: '@name',
         credits: '@credits'
