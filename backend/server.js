@@ -21,7 +21,6 @@ app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-console.log("11111111111111");
 app.use('/account', account);
 app.use('/order', order);
 
